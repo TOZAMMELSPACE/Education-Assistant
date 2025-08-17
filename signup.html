@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>সাইনআপ - শিক্ষা সহায়ক</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #fce4ec, #c8e6c9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .signup-container {
+            background: linear-gradient(135deg, #f8bbd0, #fff9c4);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+        .signup-container h2 {
+            color: #d81b60;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        .signup-container input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #ff8a65;
+            border-radius: 20px;
+            outline: none;
+            font-size: 16px;
+        }
+        .signup-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #ff8a65;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .signup-container button:hover {
+            background-color: #f06292;
+        }
+        .signup-container p {
+            margin-top: 20px;
+            color: #388e3c;
+        }
+        .signup-container a {
+            color: #d81b60;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .signup-container a:hover {
+            color: #388e3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>সাইনআপ করো</h2>
+        <input type="text" placeholder="পুরো নাম" required>
+        <input type="text" placeholder="ব্যবহারকারীর নাম" required>
+        <input type="email" placeholder="ইমেইল" required>
+        <input type="password" placeholder="পাসওয়ার্ড" required>
+        <input type="password" placeholder="পাসওয়ার্ড নিশ্চিত করো" required>
+        <button>সাইনআপ</button>
+        <p>ইতিমধ্যে অ্যাকাউন্ট আছে? <a href="login.html">লগইন করো</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>শিক্ষা সহায়ক - AI চালিত শিক্ষা প্ল্যাটফর্ম</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #fce4ec, #c8e6c9); /* হালকা পিচ থেকে হালকা সবুজ */
+            color: #333;
+        }
+        header {
+            background: linear-gradient(90deg, #f06292, #ff8a65); /* গাঢ় পিচ থেকে হালকা কমলা */
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .profile {
+            font-size: 20px;
+            color: white;
+            font-weight: bold;
+        }
+        .site-title {
+            text-align: center;
+            flex-grow: 1;
+        }
+        .site-title h1 {
+            margin: 0;
+            font-size: 36px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        nav {
+            background-color: #ffcc80; /* হালকা কমলা */
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #d81b60; /* গাঢ় পিচ */
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #388e3c; /* গাঢ় সবুজ */
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            height: calc(100vh - 150px);
+            position: relative;
+        }
+        .sidebar-left, .sidebar-right {
+            width: 20%;
+            background: linear-gradient(135deg, #c8e6c9, #fff9c4); /* হালকা সবুজ থেকে হালকা হলুদ */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar-left ul, .sidebar-right ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar-left li, .sidebar-right li {
+            margin: 15px 0;
+            font-size: 18px;
+            cursor: pointer;
+            color: #388e3c; /* গাঢ় সবুজ */
+            transition: transform 0.3s;
+            padding: 10px;
+            border: 2px solid #f06292; /* পিচ বর্ডার */
+            border-radius: 8px;
+            text-align: center;
+        }
+        .sidebar-left li:hover, .sidebar-right li:hover {
+            color: #d81b60; /* গাঢ় পিচ */
+            transform: scale(1.1);
+        }
+        .chatbot-section {
+            width: 55%;
+            background: linear-gradient(135deg, #f8bbd0, #fff9c4); /* হালকা গোলাপী থেকে হালকা হলুদ */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .chat-container {
+            width: 90%;
+            max-width: 500px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            height: 400px;
+            overflow-y: auto;
+            position: relative;
+        }
+        .chat-header {
+            font-size: 24px;
+            color: #d81b60; /* গাঢ় পিচ */
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .chat-message {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 10px;
+            text-align: left;
+            max-width: 70%;
+        }
+        .bot-message {
+            background-color: #c8e6c9; /* হালকা সবুজ */
+            color: #388e3c; /* গাঢ় সবুজ */
+            margin-left: 0;
+            animation: slideIn 0.5s ease-in-out;
+        }
+        .user-message {
+            background-color: #f8bbd0; /* হালকা গোলাপী */
+            color: #d81b60; /* গাঢ় পিচ */
+            margin-left: 30%;
+            text-align: right;
+            animation: slideIn 0.5s ease-in-out;
+        }
+        .chat-input {
+            position: absolute;
+            bottom: 10px;
+            width: 90%;
+            left: 5%;
+            display: flex;
+        }
+        .chat-input input {
+            width: 80%;
+            padding: 10px;
+            border: 2px solid #ff8a65; /* হালকা কমলা */
+            border-radius: 20px;
+            outline: none;
+        }
+        .chat-input button {
+            width: 20%;
+            padding: 10px;
+            background-color: #ff8a65; /* হালকা কমলা */
+            color: white;
+            border: none;
+            border-radius: 20px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .chat-input button:hover {
+            background-color: #f06292; /* গাঢ় পিচ */
+        }
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ef5350; /* উজ্জ্বল লাল */
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+        .logout-bar {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff8a65; /* হালকা কমলা */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .logout-bar:hover {
+            background-color: #f06292; /* গাঢ় পিচ */
+        }
+    </style>
+</head>
+<body>
+    <!-- হেডার -->
+    <header>
+    <div class="profile">
+        <a href="login.html" style="color: white; margin-right: 10px;">লগইন</a>
+        <a href="signup.html" style="color: white;">সাইনআপ</a>
+    </div>
+    <div class="site-title">
+        <h1>শিক্ষা সহায়ক</h1>
+    </div>
+</header>
+
+    <!-- নেভিগেশন বার -->
+    <nav>
+         <a href="index.html">হোম</a>
+        <a href="about.html">আমাদের সম্পর্কে</a>
+        <a href="#courses">কোর্স</a>
+        <a href="#features">আরো ফিচারস</a>
+    </nav>
+
+    <!-- মূল কনটেন্ট -->
+    <div class="container">
+        <!-- বাম সাইডবার -->
+        <div class="sidebar-left">
+            <ul>
+                <li>বিজ্ঞান</li>
+                <li>বাংলা</li>
+                <li>ইংরেজি</li>
+                <li>গণিত</li>
+                <li>ধর্ম</li>
+            </ul>
+        </div>
+
+        <!-- চ্যাটবট সেকশন -->
+        <div class="chatbot-section">
+            <div class="chat-container">
+                <div class="badge">তোমার পয়েন্ট: ৫০</div>
+                <div class="chat-header">তোমার শিক্ষা বন্ধু</div>
+                
+                <div class="chat-message bot-message">
+                    হাই! আমি তোমার শিক্ষা বন্ধু। আজ কী শিখতে চাও? গণিত, বিজ্ঞান, না বাংলা?
+                </div>
+                <div class="chat-message user-message">
+                    আমি গণিত শিখতে চাই!
+                </div>
+                <div class="chat-message bot-message">
+                    দারুণ! চলো, একটা মজার গণিতের সমস্যা দিয়ে শুরু করি। ২ + ৩ = কত?
+                </div>
+                
+                <!-- ইনপুট এরিয়া -->
+                <div class="chat-input">
+                    <input type="text" placeholder="তোমার উত্তর লিখো...">
+                    <button>পাঠাও</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ডান সাইডবার -->
+        <div class="sidebar-right">
+            <ul>
+                <li>নোটস চাট</li>
+                <li>চাটের হিস্টোরি</li>
+            </ul>
+        </div>
+
+        <!-- লগআউট বাটন -->
+        <div class="logout-bar">
+            লগআউট
+        </div>
+    </div>
+</body>
+</html>
